@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+   <head>
+		
+	  <!--
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+	  -->
+	  
+	  <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+	  <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script>
+	  
+		<script type="text/javascript">
+			Ext.onReady(function(){
+			
+				/*
+				var sessionPanel = Ext.create('Ext.Panel', {
+					html: 'session panel',
+					flex: 1
+				});
+			
+				
+				var speakersPanel = Ext.create('Ext.Panel', {
+					html: 'speaker panel',
+					flex: 1
+				});
+				
+				var combinedSpeaker = Ext.create('Ext.Panel', {
+
+					layout: {
+						type: 'vbox',
+						align: 'stretch'
+					},
+					items: [sessionPanel, speakersPanel],
+					
+					flex: 1
+				});
+				*/
+				
+				Ext.create('Ext.container.Viewport', {
+					renderTo: Ext.getBody(),
+
+					layout: {
+						type: 'hbox',
+						align: 'stretch'
+					},
+					
+					items: [
+						{
+							xtype: 'panel',
+							layout: {
+								type: 'vbox',
+								align: 'stretch'
+							},
+							items: [
+								{
+									xtype: 'panel',
+									html: 'session panel',
+									flex: 1
+								}, 
+								{
+									xtype: 'splitter'
+								},
+								{
+									xtype: 'panel',
+									html: 'speaker panel',
+									flex: 1
+								}
+							],
+							
+							flex: 1
+						}, 
+						
+						{
+							xtype: 'splitter'
+						},
+						
+						{
+							xtype: 'panel',
+							html: 'detail panel',
+							flex: 3
+						}
+					]
+				});
+
+
+			});
+			 
+		</script>
+	  
+   </head>
+   <body>
+
+   </body>
+</html>

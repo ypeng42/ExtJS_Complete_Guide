@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+   <head>
+		
+	  <!--
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+	  -->
+	  
+	  <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+	  <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script>
+	  
+		<script type="text/javascript">
+			/* Absolute Layout */
+			
+			/*
+			Ext.onReady(function() {
+				 Ext.create('Ext.container.Container', {
+					renderTo: Ext.getBody(),
+					layout: 'absolute',
+					items: [{
+					   title: 'Panel 1',
+					   x: 50,
+					   y: 50,
+					   html: 'Positioned at x:50, y:50',
+					   width: 500,
+					   height: 100
+					},{
+					   title: 'Panel 2',
+					   x: 100,
+					   y: 95,
+					   html: 'Positioned at x:100, y:95',
+					   width: 500,
+					   height: 100
+					}]
+				 });
+			  });
+				*/
+			
+				/* Accordion : This layout allows to place all the items in stack fashion (one on top of other) inside container. */
+				/*
+				Ext.onReady(function() {
+					 Ext.create('Ext.container.Container', {
+						renderTo : Ext.getBody(),
+						layout : 'accordion' ,
+						width : 600,
+						items : [{
+						   title : 'Panel 1',
+						   html : 'Panel 1 html content'
+						},{
+						   title : 'Panel 2',
+						   html : 'Panel 2 html content'
+						},{
+						   title : 'Panel 3',
+						   html : 'Panel 3 html content'
+						},{
+						   title : 'Panel 4',
+						   html : 'Panel 4 html content'
+						},{
+						   title : 'Panel 5',
+						   html : 'Panel 5 html content'
+						}]
+					 });
+				  });
+				  */
+				  
+				  /* Anchor : This layout gives the privilege to the user to give the size of each element with respect to the container size. */
+				  /*
+				  Ext.onReady(function() {
+					 Ext.create('Ext.container.Container', {
+						renderTo : Ext.getBody(),
+						layout : 'anchor' ,
+						width : 600,
+						items : [{
+						   title : 'Panel 1',
+						   html : 'panel 1',
+						   height : 100,
+						   anchor : '50%'
+						},{
+						   title : 'Panel 2',
+						   html : 'panel 2',
+						   height : 100,
+						   anchor : '100%'
+						},{
+						   title : 'Panel 3',
+						   html : 'panel 3',
+						   height : 100,
+						   anchor : '-100'
+						},{
+						   title : 'Panel 4',
+						   html : 'panel 4',
+						   anchor : '-70, 500'
+						}]
+					 });
+				  });
+				  */
+				  
+				  /* Border : In this layout various panels are nested and separated by borders. */
+				  /*
+				  Ext.onReady(function() {
+					 Ext.create('Ext.panel.Panel', {
+						renderTo: Ext.getBody(),
+						height: 300,
+						width: 600,
+						layout:'border',
+						defaults: {
+						   collapsible: true,
+						   split: true,
+						   bodyStyle: 'padding:15px'
+						},
+						items: [{
+						   title: 'Panel1',
+						   region:'west',
+						   html: 'This is Panel 1'
+						},{
+						   title: 'Panel2',
+						   region:'center',
+						   html: 'This is Panel 2'
+						},{
+						   title: 'Panel3',
+						   region: 'south',
+						   html: 'This is Panel 3'
+						},{
+						   title: 'Panel4',
+						   region: 'east',
+						   html: 'This is Panel 4'
+						},{
+						   title: 'Panel5',
+						   region: 'north',
+						   html: 'This is Panel 5'
+						}]
+					 });
+				  });
+				  */
+	  
+					/* vbox This layout allows the element to be distributed in the vertical manner. This is one of the mostly used layout. */
+					
+				Ext.onReady(function() {
+					 Ext.create('Ext.panel.Panel', {
+						renderTo : Ext.getBody(),
+						layout : {
+						   type :'vbox',
+						   align: 'stretch'               
+						},
+						requires: ['Ext.layout.container.VBox'],
+						xtype: 'layout-vertical-box',
+						width : 600,
+						height :400,
+						frame :true,
+						items : [{
+						   title: 'Panel 1',
+						   html : 'Panel with flex 1',
+						   margin: '10 30 60 120',
+						   flex : 1
+						},{
+						   title: 'Panel 2',
+						   html : 'Panel with flex 2',
+						   margin: '0 0 10 0',
+						   flex : 3
+						},{
+						   title: 'Panel 3',
+						   flex : 2,
+						   margin: '0 0 10 0',
+						   html : 'Panel with flex 2'
+						},{
+						   title: 'Panel 4',
+						   html : 'Panel with flex 1',
+						   margin: '0 0 10 0',
+						   flex : 1
+						}]
+					 });
+				  });
+				  
+		</script>
+	  
+   </head>
+   <body>
+      <div id="helloWorldPanel"></div>
+   </body>
+</html>

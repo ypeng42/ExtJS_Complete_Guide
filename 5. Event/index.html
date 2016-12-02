@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+   <head>
+		
+	  <!--
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+	  -->
+	  
+	  <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+	  <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script>
+	  
+		<script type="text/javascript">
+			Ext.onReady(function(){
+			/*
+				Ext.create('Ext.Button', {
+				   renderTo: Ext.getElementById('helloWorldPanel'),
+				   text: 'My Button',
+				   listeners: {
+					  click: function() {
+						 Ext.MessageBox.alert('Alert box', 'Button is clicked');	
+					  }
+				   }
+				});*/
+				
+				/* Same way */
+				/*
+				var button = Ext.create('Ext.Button', {
+					renderTo: Ext.getElementById('helloWorldPanel'),
+					text: 'My Button'
+				});
+				button.on('click', function() {
+				   Ext.MessageBox.alert('Alert box', 'Button is clicked');
+				});
+				*/
+				
+				var button = Ext.create('Ext.Button', {
+								   renderTo: Ext.getElementById('helloWorldPanel'),
+								   text: 'My Button',
+								   listeners: {
+									  myEvent: function() {
+										 Ext.MessageBox.alert('Alert box', 'My custom event is called');
+									  }
+								   }
+								});
+								
+								Ext.defer(function() {
+								   button.fireEvent('myEvent');
+								}, 2000);
+			
+			
+			 });
+			 
+		</script>
+	  
+   </head>
+   <body>
+	  <p> Please click the button to see event listener </p>
+      <div id = 'helloWorldPanel' />   
+   </body>
+</html>

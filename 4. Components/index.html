@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+   <head>
+		
+	  <!--
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+	  -->
+	  
+	  <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+	  
+	  <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script>
+	  
+		<script type="text/javascript">
+			/* Components 
+				Grid
+				Form
+				Message Box
+				Chart
+				Tool tip
+				Window
+				HTML editor
+				Progress bar
+			*/
+			
+			/* HTML Editor : This Ext JS UI widget is to create a html editor so that user can edit the piece of information it is entering in terms of font, color, size etc. */
+			/*
+			Ext.onReady(function() {
+				 Ext.create('Ext.form.HtmlEditor', {
+					width: 580,
+					height: 250,
+					renderTo: Ext.getBody()
+				 });
+			  });
+			  */
+			
+			
+			/* Progress bar : This is used to show the progress of the work done and to show that the backend work still in progress so wait untill its done. */
+			/*
+			Ext.onReady(function() {    
+				 function progressBar(v) {
+					return function()	{
+					   if(v == 10) {
+						  Ext.MessageBox.hide();
+						  result();
+					   } else {
+						  var i = v/9;
+						  Ext.MessageBox.updateProgress(i, Math.round(100*i)+'% completed');
+					   }
+					};
+				 };
+				 
+				 function showProgressBar() {
+					for(var i = 1; i < 11; i++){
+					   setTimeout(progressBar(i), i*500);
+					}
+				 }
+				 
+				 function result(){
+					Ext.Msg.alert('status', 'Process completed succesfully');
+				 }
+				 
+				 Ext.create('Ext.Button', {
+					renderTo: Ext.getElementById('buttonId'),
+					text: 'Click Me',
+					listeners: {
+					   click: function() {
+						  Ext.MessageBox.show({
+							 title: 'Please wait',
+							 msg: 'Loading items...',
+							 progressText: 'Initializing...',
+							 width:300,
+							 progress:true,
+							 closable:false
+						  });
+						  showProgressBar();
+					   }
+					}
+				 });
+				 
+			  });
+			 */
+			 
+			 
+			 
+			 /* Grid */
+			 /*
+			 Ext.define('StudentDataModel', {
+				 extend: 'Ext.data.Model',
+				 fields: [
+				 {name: 'name', mapping : 'name'},
+				 {name: 'age', mapping : 'age'},
+				 {name: 'marks', mapping : 'marks'}
+				 ]
+			  });
+
+			  Ext.onReady(function(){
+				 // Store data
+				 var myData = [
+					{ name : "Asha", age : "16", marks : "90" },
+					{ name : "Vinit", age : "18", marks : "95" },
+					{ name : "Anand", age : "20", marks : "68" },
+					{ name : "Niharika", age : "21", marks : "86" },
+					{ name : "Manali", age : "22", marks : "57" }
+				 ];
+				 
+				 // Creation of first grid store
+				 var gridStore = Ext.create('Ext.data.Store', {
+					 model: 'StudentDataModel',
+					 data: myData
+				 });
+				 
+				 // Creation of first grid
+				 Ext.create('Ext.grid.Panel', {
+					id                : 'gridId',
+					store             : gridStore,
+					stripeRows        : true,
+					title             : 'Students Grid', // Title for the grid
+					renderTo          :'gridDiv', // Div id where the grid has to be rendered
+					width             : 600,
+					collapsible       : true, // property to collapse grid
+					enableColumnMove  : true, // property which alllows column to move to different position by dragging that column.
+					enableColumnResize: true, // property which allows to resize column run time.
+					columns           :
+					   [{ 
+						  header: "Student Name",
+						  dataIndex: 'name',	
+						  id : 'name',    
+						  flex:  1,  		 // property defines the amount of space this column is going to take in the grid container with respect to all.	
+						  sortable: true, // property to sort grid column data. 
+						  hideable: true  // property which allows column to be hidden run time on user request.
+					   },{
+						  header: "Age", 
+						  dataIndex: 'age',
+						  flex: .5, 
+						  sortable: true,
+						   hideable: false // this column will not be available to be hidden.
+					   },{
+						  header: "Marks",
+						  dataIndex: 'marks',
+						  flex: .5, 
+						  sortable: true, 
+						  // renderer is used to manipulate data based on some conditions here who ever has marks greater than 75 will be displayed as 'Distinction' else 'Non Distinction'.
+						  renderer :  function (value, metadata, record, rowIndex, colIndex, store) {
+							 if (value > 75) {
+								return "Distinction";	  
+							 } else {
+								return "Non Distinction";
+							 }
+						  }
+					}]
+				 });
+			  });
+			  */
+			  
+			  
+			  /* form */
+			  
+			  Ext.onReady(function() {
+				 Ext.create('Ext.form.Panel', {
+					id: 'newForm',
+					renderTo: 'formId',
+					border: true,
+					width: 600,
+					
+					items: [{
+					   xtype: 'textfield',
+					   fieldLabel: 'Text Field'
+					},{
+					   xtype: 'displayfield',
+					   fieldLabel: 'Display Field'
+					},{
+					   xtype: 'textarea',
+					   fieldLabel: 'Text Area'
+					},{
+					   xtype: 'datefield',
+					   fieldLabel: 'Date picker'
+					},{
+					   xtype: 'button',
+					   text: 'Button'
+					},{
+					   xtype: 'fieldcontainer',
+					   fieldLabel: 'Radio field',
+					   defaultType: 'radiofield',
+					   defaults: {
+						  flex: 1
+					   },
+					   layout: 'hbox',
+					   items: [{
+						  boxLabel: 'A',
+						  inputValue: 'a',
+						  id: 'radio1'
+					   },{
+						  boxLabel: 'B',
+						  inputValue: 'b',
+						  id: 'radio2'
+					   },{
+						  boxLabel: 'C',
+						  inputValue: 'c',
+						  id: 'radio3'
+					   }]
+					},{
+					   xtype: 'fieldcontainer',
+					   fieldLabel: 'Check Box Field',
+					   defaultType: 'checkboxfield',
+					   layout: 'vbox',
+					   items: [{
+						  boxLabel: 'HTML',
+						  inputValue: 'html',
+						  id: 'checkbox1'
+					   },{
+						  boxLabel: 'CSS',
+						  inputValue: 'css',
+						  checked: true,
+						  id: 'checkbox2'
+					   },{
+						  boxLabel: 'JavaScript',
+						  inputValue: 'js',
+						  id: 'checkbox3'
+					   }]
+					},{
+					   xtype: 'hiddenfield',
+					   name: 'hidden field ',
+					   value: 'value from hidden field'
+					},{
+					   xtype: 'numberfield',
+					   anchor: '100%',
+					   fieldLabel: 'Numeric Field',
+					   maxValue: 99,
+					   minValue: 0
+					},{
+					   xtype: 'spinnerfield',
+					   fieldLabel: 'Spinner Field',
+					   step: 6,
+					   // override onSpinUp (using step isn't neccessary)
+					   onSpinUp: function() {
+						 var me = this;
+						 if (!me.readOnly) {
+							 var val = me.step; // set the default value to the step value
+							 if(me.getValue() !== '') {
+								 val = parseInt(me.getValue().slice(0, -5)); // gets rid of " Pack"
+							 }                          
+							 me.setValue((val + me.step) + ' Pack');
+						 }
+					   },
+
+					   // override onSpinDown
+					   onSpinDown: function() {
+						 var me = this;
+						 if (!me.readOnly) {
+							 if(me.getValue() !== '') {
+								 val = parseInt(me.getValue().slice(0, -5)); // gets rid of " Pack"
+							 }            
+							 me.setValue((val - me.step) + ' Pack');
+						 }
+					   }
+					},{
+					   xtype: 'timefield',
+					   fieldLabel: 'Time field',
+					   minValue: '6:00 AM',
+					   maxValue: '8:00 PM',
+					   increment: 30,
+					   anchor: '100%'
+					},{
+					   xtype: 'combobox',
+					   fieldLabel: 'Combo Box',
+					   store: Ext.create('Ext.data.Store', {
+								fields: ['abbr', 'name'],
+								data: [{
+								   'abbr': 'HTML',
+								   'name': 'HTML'
+								},{
+								   'abbr': 'CSS',
+								   'name': 'CSS'
+								},{
+								   'abbr': 'JS',
+								   'name': 'JavaScript'
+								}]
+							 }),
+					   valueField: 'abbr',
+					   displayField: 'name'
+					},{
+					   xtype: 'filefield',
+					   fieldLabel: 'File field',
+					   labelWidth: 50,
+					   msgTarget: 'side',
+					   allowBlank: false,
+					   anchor: '100%',
+					   buttonText: 'Select File...'
+					}]
+				 });
+			  });
+			 
+		</script>
+	  
+   </head>
+   <body>
+	  <div id = "formId"></div>
+      <div id="helloWorldPanel"></div>
+	  <div id = "gridDiv"></div>
+	  <p> Click the button to see progress bar  </p>
+	  <div id = "buttonId"></div>
+   
+   </body>
+</html>
