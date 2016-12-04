@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" /> -->
+      <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script> -->
+      <!-- <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" /> -->
+      <!-- <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script> -->
+	  
+	  <link href="ext-source/theme-classic-all.css" rel="stylesheet" />
+      <script type="text/javascript" src="ext-source/ext-all.js"></script>
+	  
+      <script type="text/javascript">
+         /*
+         Model is a collection of fields and their data (e.g. a User model with username and password fields). Models know how to persist themselves through the data package, and can be linked to other models through associations. Models work a lot like the Ext JS 3 Record class, and are normally used with Stores to present data into grids and other components
+         View is any type of component - grids, trees and panels are all views.
+         Controllers are special places to put all of the code that makes your app work - whether that's rendering views, instantiating Models, or any other app logic.
+         */
+		Ext.define('AM.view.user.List', {
+			extend: 'Ext.grid.Panel',
+			alias: 'widget.userlist',
+
+			title: 'All Users',
+
+			initComponent: function() {
+				this.store = {
+					fields: ['name', 'email'],
+					data: [{
+						name: 'Ed',
+						email: 'ed@sencha.com'
+					}, {
+						name: 'Tommy',
+						email: 'tommy@sencha.com'
+					}]
+				};
+
+				this.columns = [{
+					header: 'Name',
+					dataIndex: 'name',
+					flex: 1
+				}, {
+					header: 'Email',
+					dataIndex: 'email',
+					flex: 1
+				}];
+
+			},
+
+			listeners: {
+				itemdblclick: function(gridpanel, record, item, index, e) {
+					alert('asdsad');
+				}
+			}
+
+		});
+
+		Ext.application({
+
+			launch: function() {
+
+				Ext.create('Ext.container.Viewport', {
+					layout: 'fit',
+					items: {
+						xtype: 'userlist'
+					}
+				});
+
+
+			}
+		});
+         
+      </script>
+   </head>
+   <body>
+      <div id="helloWorldPanel"></div>
+   </body>
+</html>
