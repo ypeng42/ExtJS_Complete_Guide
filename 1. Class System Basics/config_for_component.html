@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 6.2.0 is the newest version so far -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet"/>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+
+	<!-- You can also download ExtJS from https://www.sencha.com/legal/gpl/ and run locally -->
+	<!-- <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" /> -->
+	<!-- <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script> -->
+
+	<script type="text/javascript">
+
+		Ext.define('Custom', {
+			extend: 'Ext.panel.Panel',
+			alias: 'widget.custpanel',
+			title: 'default title',
+
+			tbar: {
+				items: [{
+					text: 'show foo.bar',
+					handler: function(btn) {
+						alert(btn.up('panel').foo.bar);
+
+						// Note: don't forget to level up! This item doesn't have the "counter"
+						// We change a primitive property here
+						btn.up('panel').counter = btn.up('panel').counter + 1;
+						console.log(btn.up('panel').counter);
+					}
+				},{
+					text: 'change foo.bar',
+					handler: function(btn) {
+						btn.up('panel').foo.bar = btn.up('panel').id;
+					}
+				}]
+			},
+
+			counter: 1, // primitive type won't be shared!
+
+			foo: {
+				bar: null
+			},
+
+
+			/**
+			 *  Make sure we declare all Non-primitive types (arrays & objects) in initComponent(), otherwise
+			 *  they will be Shared in ALL instances
+			 *
+			 *  primitive-type won't be shared
+			 */
+			initComponent: function() {
+				// Before this function call, all config options are already applied
+				// access them using this.XXX
+
+				// This is necessary, to ensure parent's initComponent() is called.
+				this.callParent(arguments);
+
+				// TODO: need to uncomment this! otherwise all instance will share the same foo
+//				this.foo = Ext.apply({}, this.foo);  // or just {bar: null};
+			}
+		});
+
+
+		Ext.onReady(function(){
+
+			Ext.create('Custom', {
+				title: 'Panel',
+				width: 400,
+				renderTo: 'd1'
+			});
+
+			Ext.create('Custom', {
+				title: 'Other Panel',
+				width: 400,
+				renderTo: 'd2'
+			});
+
+		});
+
+	</script>
+
+</head>
+
+
+<body>
+	<div id="d1"></div>
+	<div id="d2"></div>
+</body>
+</html>

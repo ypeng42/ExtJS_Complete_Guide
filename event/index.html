@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- 6.2.0 is the newest version so far -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet"/>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+
+	<!-- You can also download ExtJS from https://www.sencha.com/legal/gpl/ and run locally -->
+	<!-- <link href="../ext-6.2.0-gpl/ext-6.2.0/build/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" /> -->
+	<!-- <script type="text/javascript" src="../ext-6.2.0-gpl/ext-6.2.0/build/ext-all.js"></script> -->
+
+	<script type="text/javascript">
+
+		Ext.define('MyWindow', {
+			// You can directly call and set variable declared outside of config
+			isWindow: true,
+
+			/**
+			 * configurations are completely encapsulated from other class members
+			 *
+			 * You have to use getter and setter for those config properties
+			 */
+			config: {
+				title: 'Title Here',
+
+				bottomBar: {
+					height: 50,
+					resizable: false
+				}
+			},
+
+			/**
+			 * A constructor
+			 */
+			constructor: function (config) {
+				console.log("MyWindow constructor method running first");
+
+				// Initializes config properties
+				this.initConfig(config);
+			},
+
+			/**
+			 * An apply method is AUTO-generated for every config property.
+			 * The auto-generated setter method calls the apply method internally before setting the value.
+			 * Override the apply method for a config property if you need to run custom logic before setting the value.
+			 * If apply does not return a value then the setter will not set the value
+			 */
+			applyTitle: function (title) {
+				console.log("applyTitle method running");
+
+				if (!Ext.isString(title) || title.length === 0) {
+					alert('Error: Title must be a valid non-empty string');
+				}
+				else {
+					return title;
+				}
+			},
+
+			applyBottomBar: function (bottomBar) {
+				console.log("applyBottomBar method running");
+
+//				debugger
+				/* bottomBar is the height:60 guy*/
+
+				if (bottomBar) {
+
+					// If there is a custom applyXXX method, the XXX object will be undefined, like it is here.
+					if (!this.bottomBar) {
+						bar = Ext.create('MyWindowBottomBar', bottomBar);
+						debugger
+						return bar;
+					}
+					else {
+						this.bottomBar.setConfig(bottomBar);
+					}
+				}
+			},
+
+			/**
+			 * The updater function gets called by the setter (after the applier if there is one).
+			 * The updater is generally used by a class as a reaction to a config property changing.
+			 */
+			updateTitle: function(newValue, oldValue) {
+				console.log("updater get called!");
+				console.log("old value: " + oldValue + " new value: " + newValue);
+			}
+		});
+
+		/** A child component to complete the example. */
+		Ext.define('MyWindowBottomBar', {
+			config: {
+				height: undefined,
+				resizable: true
+			},
+
+			constructor: function (config) {
+				console.log("MyWindowBottomBar constructor running");
+				this.initConfig(config);
+			}
+		});
+
+		Ext.application({
+			launch: function () {
+
+				var myWindow = Ext.create('MyWindow', {
+					title: 'Hello World',
+					bottomBar: {
+						height: 60
+					}
+				});
+
+				debugger
+			}
+		});
+
+	</script>
+
+</head>
+<body>
+<div id="helloWorldPanel"></div>
+</body>
+</html>
